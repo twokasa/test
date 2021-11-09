@@ -1,0 +1,28 @@
+name: workflow
+
+permissions:
+  id-token: write
+  contents: write
+
+jobs:
+  terraform:
+    name: Terraform
+    timeout-minutes: 10
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        shell: bash
+
+    steps:
+    - name: Configure AWS Credentials
+      uses: aws-actions/configure-aws-credentials@master
+      with:
+          role-to-assume: arn:aws:iam::043723572295:role/ExecuteTerrafromInGithubActionsRole
+          role-session-name: cheke-ci
+          aws-region: ap-northeast-1
+
+    - name: terraform validate
+      id: validate
+      run: echo "OK"
+      continue-on-error: true
