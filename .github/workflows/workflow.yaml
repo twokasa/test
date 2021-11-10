@@ -25,10 +25,10 @@ jobs:
       uses: aws-actions/configure-aws-credentials@master
       with:
           role-to-assume: ${{ env.role-to-assume }}
-          role-session-name: cheke-ci
+          role-session-name: testsession
           aws-region: ap-northeast-1
 
-    - name: terraform validate
+    - name: success
       id: validate
       run: echo "OK"
       continue-on-error: true
