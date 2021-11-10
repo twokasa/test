@@ -3,6 +3,9 @@ name: workflow
 on:
   push
 
+env:
+  role-to-assume: arn:aws:iam::248606432711:role/ExecuteGithubActionsWithOidcRole
+
 permissions:
   id-token: write
   contents: write
@@ -21,7 +24,7 @@ jobs:
     - name: Configure AWS Credentials
       uses: aws-actions/configure-aws-credentials@master
       with:
-          role-to-assume: arn:aws:iam::043723572295:role/ExecuteTerrafromInGithubActionsRole
+          role-to-assume: ${{ env.role-to-assume }}
           role-session-name: cheke-ci
           aws-region: ap-northeast-1
 
