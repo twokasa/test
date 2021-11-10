@@ -4,7 +4,7 @@ on:
   push
 
 env:
-  role-to-assume: arn:aws:iam::248606432711:role/TestRole
+  role-to-assume: arn:aws:iam::248606432711:role/ExecuteGithubActionsWithOidcRole
 
 permissions:
   id-token: write
